@@ -9,7 +9,7 @@ class LinkedList {
     constructor(value) {
         this.head = null;
         this.length = 0;
-        if (value !== null) {
+        if (value !== undefined) {
             this.head = new Node(value);
             this.length++;
         }
@@ -26,6 +26,7 @@ class LinkedList {
             node.next = new Node(value);
         }
         this.length++;
+        return this;
     }
 
     remove(value) {
@@ -38,13 +39,25 @@ class LinkedList {
                 previousNode = currentNode;
                 currentNode = currentNode.next;
                 if (currentNode === null) {
-                    console.log('Cannot delete! Value not found!');
-                    return;
+                    console.log(`Cannot delete! Value ${value} not found!`);
+                    return this;
                 }
             }
             previousNode.next = currentNode.next;
         }
         this.length--;
+        return this;
+    }
+
+    contains(value) {
+        let currentNode = this.head;
+        while (currentNode.value !== value) {
+            currentNode = currentNode.next;
+            if (currentNode === null) {
+                return false;
+            }
+        }
+        return true;
     }
 
     getLength() {
@@ -65,3 +78,13 @@ list2.insert(1);
 list2.insert(9);
 console.log(list2);
 console.log(list);
+console.log(list.contains(0));
+console.log(list.contains(1));
+let list3 = new LinkedList();
+console.log(list3);
+list3.insert(7);
+console.log(list3);
+list3.remove(7);
+console.log(list3);
+list3.insert(1).insert(2).insert(3).remove(0).insert(4);
+console.log(list3);

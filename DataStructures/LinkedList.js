@@ -4,18 +4,18 @@ class Node {
             console.log('Cannot create Node from undefined!');
             return;
         }
-        this.value = value;
-        this.next = null;
+        this._value = value;
+        this._next = null;
     }
 }
 
 class LinkedList {
     constructor(value) {
-        this.head = null;
-        this.length = 0;
+        this._head = null;
+        this._length = 0;
         if (value !== undefined) {
-            this.head = new Node(value);
-            this.length++;
+            this._head = new Node(value);
+            this._length++;
         }
     }
 
@@ -23,16 +23,16 @@ class LinkedList {
         if (value === undefined) {
             console.log('Argument needed for insert!');
             return this;
-        } else if (this.head === null) {
-            this.head = new Node(value);
+        } else if (this._head === null) {
+            this._head = new Node(value);
         } else {
-            let node = this.head;
-            while (node.next !== null) {
-                node = node.next;
+            let node = this._head;
+            while (node._next !== null) {
+                node = node._next;
             }
-            node.next = new Node(value);
+            node._next = new Node(value);
         }
-        this.length++;
+        this._length++;
         return this;
     }
 
@@ -40,24 +40,24 @@ class LinkedList {
         if (value === undefined) {
             console.log('Argument needed for remove!');
             return this;
-        } else if (this.head === null) {
+        } else if (this._head === null) {
             console.log(`Cannot remove! List is empty!`);
             return this;
-        } else if (this.head.value === value) {
-            this.head = this.head.next;
-            this.length--;
+        } else if (this._head._value === value) {
+            this._head = this._head._next;
+            this._length--;
             return this;
         } else {
-            let currentNode = this.head;
+            let currentNode = this._head;
             let previousNode;
             while (currentNode !== null) {
-                if (currentNode.value === value) {
-                    previousNode.next = currentNode.next;
-                    this.length--;
+                if (currentNode._value === value) {
+                    previousNode._next = currentNode._next;
+                    this._length--;
                     return this;
                 }
                 previousNode = currentNode;
-                currentNode = currentNode.next;
+                currentNode = currentNode._next;
             }
         }
         console.log(`Cannot delete! Value ${value} not found!`);
@@ -69,19 +69,19 @@ class LinkedList {
             console.log('Argument needed for contains!');
             return false;
         } else {
-            let node = this.head;
+            let node = this._head;
             while (node !== null) {
-                if (node.value === value) {
+                if (node._value === value) {
                     return true;
                 }
-                node = node.next;
+                node = node._next;
             }
             return false;
         }
     }
 
     getLength() {
-        return this.length;
+        return this._length;
     }
 }
 

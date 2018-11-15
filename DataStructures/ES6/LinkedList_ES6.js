@@ -14,8 +14,7 @@ class LinkedList {
         this._head = null;
         this._length = 0;
         if (value !== undefined) {
-            this._head = new Node(value);
-            this._length++;
+            this.insert(value);
         }
     }
 
@@ -114,3 +113,6 @@ list4.remove(3);
 console.log(list4.contains(3));
 list4.insert(3);
 console.log(list4);
+let list5 = new LinkedList(8);
+list5.insert(5).insert(4).remove(5).remove(4).remove(8);
+console.log(list5);

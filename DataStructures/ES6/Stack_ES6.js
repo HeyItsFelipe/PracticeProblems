@@ -1,10 +1,17 @@
 class Stack {
-    constructor() {
+    constructor(value) {
         this._storage = {};
         this._size = 0;
+        if (value !== undefined) {
+            this.push(value);
+        }
     }
 
     push(value) {
+        if (value === undefined) {
+            console.log('Cannot push undefined value!');
+            return;
+        }
         this._storage[this._size] = value;
         this._size++;
     }
@@ -41,3 +48,8 @@ s.pop();
 s.pop();
 console.log(s);
 console.log(s.peek());
+let s2 = new Stack(3);
+s2.push(7);
+s2.push(8);
+s2.pop();
+console.log(s2);

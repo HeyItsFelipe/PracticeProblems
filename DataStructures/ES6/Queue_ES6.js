@@ -1,8 +1,11 @@
 class Queue {
-    constructor() {
+    constructor(value) {
         this._storage = {};
         this._size = 0;
         this._headIndex = 0;
+        if (value !== undefined) {
+            this.enqueue(value);
+        }
     }
 
     enqueue(value) {
@@ -52,3 +55,8 @@ q.dequeue();
 q.dequeue();
 console.log(q);
 console.log(q.peek());
+let q2 = new Queue(3);
+q2.enqueue(8);
+q2.enqueue(7);
+q2.dequeue();
+console.log(q2);

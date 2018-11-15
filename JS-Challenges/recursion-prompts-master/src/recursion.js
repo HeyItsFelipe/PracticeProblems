@@ -138,16 +138,58 @@ var palindrome = function (string) {
 // modulo(17,5) // 2
 // modulo(22,6) // 4
 var modulo = function (x, y) {
+    if (y === 0) {
+        return NaN;
+    }
+    if (x < 0) {
+        return -modulo(-x, y);
+    }
+    if (y < 0) {
+        return modulo(x, -y);
+    }
+    if (x < y) {
+        return x;
+    }
+    return modulo(x - y, y);
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
 var multiply = function (x, y) {
+    if (x === 0 || y === 0) {
+        return 0;
+    }
+    if (x < 0) {
+        return -multiply(-x, y);
+    }
+    if (y < 0) {
+        return -multiply(x, -y);
+    }
+    return x + multiply(x, y - 1);
 };
 
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods to arrive at an approximate quotient (ignore decimal endings).
 var divide = function (x, y) {
+    if (x === 0 && y === 0) {
+        return NaN;
+    }
+    if (x === 0) {
+        return 0;
+    }
+    if (y === 0) {
+        return Infinity;
+    }
+    if (x < 0) {
+        return -divide(-x, y);
+    }
+    if (y < 0) {
+        return -divide(x, -y);
+    }
+    if (x < y) {
+        return 0;
+    }
+    return 1 + divide(x - y, y);
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers. The GCD of two
@@ -156,6 +198,19 @@ var divide = function (x, y) {
 // http://www.cse.wustl.edu/~kjg/cse131/Notes/Recursion/recursion.html
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
 var gcd = function (x, y) {
+    if (x < 0 || y < 0) {
+        return null;
+    }
+    if (x < y) {
+        return gcd(y, x);
+    }
+    if (x === 0) {
+        return y;
+    }
+    if (y === 0) {
+        return x;
+    }
+    return gcd(y, x % y);
 };
 
 // 15. Write a function that compares each character of two strings and returns true if

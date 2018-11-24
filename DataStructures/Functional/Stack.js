@@ -13,7 +13,7 @@ Stack.prototype.push = function (value) {
     }
     this._storage[this._size] = value;
     this._size++;
-}
+};
 
 Stack.prototype.pop = function () {
     if (this._size === 0) {
@@ -24,18 +24,18 @@ Stack.prototype.pop = function () {
     delete this._storage[this._size - 1];
     this._size--;
     return popped;
-}
+};
 
 Stack.prototype.peek = function () {
     if (this._size === 0) {
         console.log('Peeked at empty Stack!');
     }
     return this._storage[this._size - 1];
-}
+};
 
 Stack.prototype.getSize = function () {
     return this._size;
-}
+};
 
 let s = new Stack();
 s.push(3);

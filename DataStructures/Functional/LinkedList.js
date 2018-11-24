@@ -30,7 +30,7 @@ LinkedList.prototype.insert = function (value) {
     }
     this._length++;
     return this;
-}
+};
 
 LinkedList.prototype.remove = function (value) {
     if (value === undefined) {
@@ -58,7 +58,7 @@ LinkedList.prototype.remove = function (value) {
     }
     console.log(`Value ${value} not found!  Cannot remove!`);
     return this;
-}
+};
 
 LinkedList.prototype.contains = function (value) {
     if (value === undefined) {
@@ -73,11 +73,11 @@ LinkedList.prototype.contains = function (value) {
         node = node._next;
     }
     return false;
-}
+};
 
 LinkedList.prototype.getLength = function () {
     return this._length;
-}
+};
 
 let l = new LinkedList();
 l.insert(12).insert(34).remove(3);

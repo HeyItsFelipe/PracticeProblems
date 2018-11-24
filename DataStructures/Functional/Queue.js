@@ -14,7 +14,7 @@ Queue.prototype.enqueue = function (value) {
     }
     this._storage[this._size + this._headIndex] = value;
     this._size++;
-}
+};
 
 Queue.prototype.dequeue = function () {
     if (this._size === 0) {
@@ -26,7 +26,7 @@ Queue.prototype.dequeue = function () {
     this._headIndex++;
     this._size--;
     return deq;
-}
+};
 
 Queue.prototype.peek = function () {
     if (this._size === 0) {
@@ -34,11 +34,11 @@ Queue.prototype.peek = function () {
         return;
     }
     return this._storage[this._headIndex];
-}
+};
 
 Queue.prototype.getSize = function () {
     return this._size;
-}
+};
 
 let q = new Queue();
 q.enqueue(4);

@@ -36,7 +36,14 @@ const inversionsCount2 = (arrayOfIntegers) => {
             }
             else {
                 sortedResult.push(sortedRight[j]);
-                j++
+                j++;
+                //Because the element of the left array is larger
+                //than the element of the right array, an inversion
+                //is detected.  Therefore we calculate the inversion.
+                //This formula also detects inversion that won't be iterated
+                //over by i.
+                //Use an example such as [6,7] [4,5] and go over the code.
+                //The inv_count should be 4.
                 inv_count = inv_count + (sortedLeft.length - i);
             }
         }
@@ -62,8 +69,19 @@ const inversionsCount2 = (arrayOfIntegers) => {
     return mergeSort(arrayOfIntegers)[1];
 };
 
+/*
+Modified Merge Sort.
+This would be of O(nlogn) time complexity and O(n) space complexity.
+This used the divide and conquer paradigm of merge sort.
+The dividing of the array remains the same but the conquering aspect is different.
+During the conquering process, which is the merge function, we not only sort
+and merge the array, we are also calculating the inversion count.  To
+see how the inversions are calculated, see code.
+*/
+
 console.log(inversionsCount2([2, 1]));  //1
 console.log(inversionsCount2([2, 4, 1, 3, 5]));  //3
 console.log(inversionsCount2([1, 20, 6, 4, 5]));  //5
 console.log(inversionsCount2([]));  //0
 console.log(inversionsCount2([1]));  //0
+console.log(inversionsCount2([6, 7, 4, 5]));  //4

@@ -37,13 +37,18 @@ const inversionsCount2 = (arrayOfIntegers) => {
             else {
                 sortedResult.push(sortedRight[j]);
                 j++;
-                //Because the element of the left array is larger
+                //Because the element of the left array is greater
                 //than the element of the right array, an inversion
                 //is detected.  Therefore we calculate the inversion.
-                //This formula also detects inversion that won't be iterated
-                //over by i.
+                //This formula also detects inversions that won't be iterated
+                //over by i by understanding that if element i is greater than
+                //element j, then elements of i to the end of its array are
+                //also greater than that element j.
+                //This is due to both arrays being sorted.
                 //Use an example such as [6,7] [4,5] and go over the code.
-                //The inv_count should be 4.
+                //In the example, 7 doesn't get iterated over, but the
+                //inversion is still calculated.
+                //The inv_count for the example should be 4.
                 inv_count = inv_count + (sortedLeft.length - i);
             }
         }

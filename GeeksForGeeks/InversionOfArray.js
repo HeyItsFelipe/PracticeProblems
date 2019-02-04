@@ -1,5 +1,5 @@
 /*
-https://www.geeksforgeeks.org/counting-inversions/
+https://practice.geeksforgeeks.org/problems/inversion-of-array/0
 */
 
 const inversionsCount = (arrayOfIntegers) => {
